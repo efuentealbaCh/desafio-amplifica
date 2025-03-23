@@ -14,7 +14,12 @@ $(document).ready(function() {
                 window.location.href = "/pedidos";
             },
             error: function(xhr) {
-                console.error("Error en autenticación:", xhr.responseText);
+                error = JSON.parse(xhr.responseText)
+                Swal.fire({
+                    icon: "error",
+                    title: "Error al iniciar sesión",
+                    text: `${error.error}`,
+                  });
             }
         });
     });

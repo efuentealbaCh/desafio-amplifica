@@ -51,30 +51,9 @@
     </div>
     <script src="{{ asset('js/app.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/auth.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#login-form").submit(function(event) {
-                event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
-
-                $.ajax({
-                    url: `${window.location.origin}/api/auth`, // Asegúrate de que esta URL es correcta
-                    type: "POST",
-                    data: {
-                        username: $("#username").val(),
-                        password: $("#password").val(),
-                        _token: $("input[name=_token]").val() // Enviar el token CSRF
-                    },
-                    success: function(response) {
-                        window.location.href = "/pedidos"; // Redirige después del login
-                    },
-                    error: function(xhr) {
-                        console.error("Error en autenticación:", xhr.responseText);
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
