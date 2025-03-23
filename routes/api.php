@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShippController;
 
-Route::post('/auth', [AuthController::class, 'authenticate']);
+Route::post('/auth', [AuthController::class, 'authenticate'])->name('api.login');
 
 Route::middleware(['refresh.token'])->group(function () {
-    // Tus rutas aquí
     Route::post('/getRate', [ShippController::class, 'getRate']);
     Route::get('/regiones', [ShippController::class, 'getRegionesConfig']);
 });

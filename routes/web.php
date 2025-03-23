@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+})->name('login');
+
+Route::middleware(['refresh.token'])->group(function () {
+    Route::get('/pedidos', function () {
+        return view('pedidos');
+    })->name('pedidos');
 });

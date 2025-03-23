@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -38,5 +39,16 @@ class AuthController extends Controller
         Cache::put('password', $request->input('password'));
 
         return response()->json(['token' => $token]);
+    }
+
+    public function logout()
+    {
+        // Elimina los datos almacenados en caché
+        Cache::forget('amplifica_token');
+        Cache::forget('username');
+        Cache::forget('password');
+
+        // Redirige al login
+        return redirect()->route('login');
     }
 }
