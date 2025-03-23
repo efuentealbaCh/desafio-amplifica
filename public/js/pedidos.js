@@ -8,7 +8,12 @@ $(document).ready(function () {
         const peso = parseFloat($('#peso').val());
 
         if (!productoId || !cantidad || !peso) {
-            alert('Por favor complete todos los campos.');
+            Swal.fire({
+                icon: "error",
+                title: "Debe completar los campos de producto, peso y cantidad obligatoriamente.",
+                text: `${error.error}`,
+              });
+
             return;
         }
 
@@ -56,7 +61,11 @@ $(document).ready(function () {
         const comuna = $('#comuna').val();
 
         if (!comuna || productosCarrito.length === 0) {
-            alert('Por favor seleccione una comuna y agregue productos.');
+            Swal.fire({
+                icon: "error",
+                title: "Debe seleccionar una comuna y temer elementos en el carrito de compras",
+                text: `${error.error}`,
+              });
             return;
         }
 
