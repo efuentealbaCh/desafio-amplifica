@@ -31,4 +31,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'amplifica' => [
+        'url' => env('AMPLIFICA_API_URL'),
+    ],
 ];
